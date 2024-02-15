@@ -1,19 +1,19 @@
 const { Category } = require('../models');
 const categoryData = [
     {
-        image: "Develop/views/images/comp clip.jpeg",
+        image: "Develop/public/images/compclip.jpeg",
         category_name: 'DeskTop Computers',
     },
     {
-        image: "Develop/views/images/laptop clip.jpeg",
+        image: "Develop/public/images/laptopclip.jpeg",
         category_name: 'Laptops',
     },
     {
-        image: "Develop/views/images/smartph clip.jpeg",
+        image: "Develop/public/images/smartphclip.jpeg",
         category_name: 'Smart Phones',
     },
     {
-        image: "Develop/views/images/smwatch clip.jpeg",
+        image: "Develop/public/images/smwatchclip.jpeg",
         category_name: 'Smart Watches',
     }
 ];
