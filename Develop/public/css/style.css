@@ -1,6 +1,7 @@
 .gallery {
-  display: flex;
+  display: inline-block;
   justify-content: center;
+  flex-direction: row;
   gap: 20px; 
   margin: 20px; 
 }

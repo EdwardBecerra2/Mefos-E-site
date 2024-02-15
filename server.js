@@ -13,6 +13,7 @@ const app = express();
 // Import routes
 const authRoutes = require('./Develop/controllers/api/authRoutes'); 
 const homeRoute = require('./Develop/controllers/homeroute');
+const { connect } = require('http2');
 
 // Session middleware setup
 app.use(session({
@@ -46,23 +47,35 @@ app.use(express.static(path.join(__dirname, 'Develop/public')));
 app.use('/', authRoutes);
 app.use('/', homeRoute);
 
-const YOUR_DOMAIN = 'http://localhost:4242';
-
-app.post('/create-checkout-session', async (req, res) => {
-    const session = await stripe.checkout.sessions.create({
-        line_items: [
-            {
-                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                price: '{{PRICE_ID}}',
-                quantity: 1,
-            },
-        ],
-        mode: 'payment',
-        success_url: `${YOUR_DOMAIN}/success.html`,
-        cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-    });
-
-    res.redirect(303, session.url);
+app.get('/', (req, res) => {
+  const query = `SELECT * FROM product`;
+  connection.query(query, (err, results) => {
+    if (!req.session.cart) {
+      req.session.cart = [];
+    }
+    res.render('product', { products: results, cart: req.session.cart })
+  });
 });
+
+
+
+// const YOUR_DOMAIN = 'http://localhost:4242';
+
+// app.post('/create-checkout-session', async (req, res) => {
+//     const session = await stripe.checkout.sessions.create({
+//         line_items: [
+//             {
+//                 // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+//                 price: '{{PRICE_ID}}',
+//                 quantity: 1,
+//             },
+//         ],
+//         mode: 'payment',
+//         success_url: `${YOUR_DOMAIN}/success.html`,
+//         cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+//     });
+
+//     res.redirect(303, session.url);
+// });
 
 app.listen(4242, () => console.log('Running on port 4242'));

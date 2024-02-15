@@ -1,6 +1,35 @@
 <div class="gallery">
-    <img src="/images/compclip.jpeg" alt="computer" />
-    <img src="/images/laptopclip.jpeg" alt="Laptop" />
-    <img src="/images/smartphclip.jpeg" alt="Smartphone" />
-    <img src="/images/smwatchclip.jpeg" alt="Smartwatch" />
+    <div class="mt-3 mb-3">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Product List</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {{!-- <div class="col-md-4 mb-1 text-center"> --}}
+                            <img src="/images/compclip.jpeg" class="img-thumbnail mb-3" />
+                            <form method="post" action="/add_cart">
+                                <input type="submit" class="btn btn-warning" value="Add to Cart" />
+                            </form>
+
+                            <img src="/images/laptopclip.jpeg" class="img-thumbnail mb-4" />
+                            <form method="post" action="/add_cart">
+                                <input type="submit" class="btn btn-warning" value="Add to Cart" />
+                            </form>
+                            <img src="/images/smartphclip.jpeg" class="img-thumbnail mb-4" />
+                            <form method="post" action="/add_cart">
+                                <input type="submit" class="btn btn-warning" value="Add to Cart" />
+                            </form>
+                            <img src="/images/smwatchclip.jpeg" class="img-thumbnail mb-4" />
+                            <form method="post" action="/add_cart">
+                                <input type="submit" class="btn btn-warning" value="Add to Cart" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
