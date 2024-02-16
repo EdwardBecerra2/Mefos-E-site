@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Product, Category, ProductTag } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
         const product = await Product.findAll({
          include: [{

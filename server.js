@@ -46,7 +46,6 @@ app.use(express.static(path.join(__dirname, 'Develop/public')));
 app.use('/', authRoutes);
 app.use('/', homeRoute);
 
-<<<<<<< HEAD
 app.get('/', (req, res) => {
   const query = `SELECT * FROM product`;
   connection.query(query, (err, results) => {
@@ -61,7 +60,7 @@ app.get('/', (req, res) => {
 app.post('cartRoute', (req, res) => {
   const product_id = req.body.category_id;
   const product_name = req.body.product_name;
-  const product_price = req.body.price;
+  // const product_price = req.body.price;
   let count = 0;
   for (i = 0; i < req.session.cart.length; i++) {
     if (req.session.cart[i].product.id == product.id) {
@@ -94,9 +93,7 @@ app.post('/remove', (req, res) => {
 
 
 app.listen(4242, () => console.log('Running on port 4242'));
-=======
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 })
->>>>>>> main
