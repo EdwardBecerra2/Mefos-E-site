@@ -1,6 +1,3 @@
-const Stripe = require('stripe');
-// This is your test secret API key.
-const stripe = Stripe('sk_test_51Oggj7Gh3q0yh3BLowB8cJAqHl3lJWFx5DiwR56OZUwZTe3m0zdvsQD25Fpq1K50KaP0y4eghb9EVttCyVnjDSqm00UuZEv0K3');
 const express = require('express');
 const { engine } = require('express-handlebars');
 const session = require('express-session');
@@ -8,7 +5,9 @@ const path = require('path');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./Develop/config/connection');
 
+
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Import routes
 const authRoutes = require('./Develop/controllers/api/authRoutes'); 
@@ -46,23 +45,7 @@ app.use(express.static(path.join(__dirname, 'Develop/public')));
 app.use('/', authRoutes);
 app.use('/', homeRoute);
 
-const YOUR_DOMAIN = 'http://localhost:4242';
 
-app.post('/create-checkout-session', async (req, res) => {
-    const session = await stripe.checkout.sessions.create({
-        line_items: [
-            {
-                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                price: '{{PRICE_ID}}',
-                quantity: 1,
-            },
-        ],
-        mode: 'payment',
-        success_url: `${YOUR_DOMAIN}/success.html`,
-        cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-    });
-
-    res.redirect(303, session.url);
-});
-
-app.listen(4242, () => console.log('Running on port 4242'));
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+})
