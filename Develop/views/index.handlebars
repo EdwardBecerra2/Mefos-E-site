@@ -8,22 +8,13 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        
-                            <img src="/images/compclip.jpeg" class="img-thumbnail mb-1" />
                             <form method="post" action="/add_cart">
-                                <input type="submit" class="btn btn-warning" id="comp" value="Add Computer to Cart - $1200" />
-                            </form>
-                            <img src="/images/laptopclip.jpeg" class="img-thumbnail mb-2" />
-                            <form method="post" action="/add_cart">
-                                <input type="submit" class="btn btn-warning" id="laptp" value="Add Laptop to Cart - $2000" />
-                            </form>
-                            <img src="/images/smartphclip.jpeg" class="img-thumbnail mb-3" />
-                            <form method="post" action="/add_cart">
-                                <input type="submit" class="btn btn-warning" id ="smphone" value="Add to SmartPhone Cart - $999" />
-                            </form>
-                            <img src="/images/smwatchclip.jpeg" class="img-thumbnail mb-4" />
-                            <form method="post" action="/add_cart">
-                                <input type="submit" class="btn btn-warning" id="watch" value="Add SmartWatch to Cart - $500" />
+                                {{#each products as |product|}}
+                                    {{!-- <img src="{{image_url}}" class="img-thumbnail mb-1" width="200" height="200"/> --}}
+                                    <h1> {{product_name}} </h1>
+                                    <h1> {{price}} </h1>
+                                    <input type="submit" class="btn btn-warning" id="comp" value="Add Computer to Cart - ${{price}}" />
+                                {{/each}}
                             </form>
                         </div>
                     </div>

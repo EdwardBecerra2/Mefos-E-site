@@ -18,7 +18,6 @@ Product.init(
         price: {
             type: DataTypes.DECIMAL,
             allowNull: false,
-            unique: true,
             validate: {
                 isDecimal: true,
             },
@@ -30,6 +29,9 @@ Product.init(
             validate: {
                 isNumeric: true,
             },
+        },
+        image_url: {
+            type: DataTypes.STRING,
         },
         category_id: {
             type: DataTypes.INTEGER,

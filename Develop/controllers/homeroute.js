@@ -1,8 +1,26 @@
 const express = require('express');
 const router = express.Router();
+const { Product, Category, ProductTag } = require('../models');
 
-router.get('/', (req, res) => {
-    res.render('index', { loggedIn: req.session.loggedIn });
+router.get('/', async (req, res) => {
+    const products = await Product.findAll({
+        include: [{
+            model: Category,
+            model: ProductTag,
+
+        }],
+        raw: true
+    });
+
+    
+
+
+    
+
+    res.render('index', {
+        loggedIn: req.session.loggedIn,
+        products
+    });
 });
 
 module.exports = router;
