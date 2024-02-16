@@ -26,17 +26,23 @@
 //             defaultValue: 1
 //         },
 // })
-// const cart = [];
-// module.exports = class cart {
-//     static save(product, quantity) {
-//         If(cart) {} else {
-//             cart = { products: [], totalPrice: 0 };
-//             product.qty = 1
-//             cart.products.push({ product, quantity });
-//             cart.totalPrice += product.price;
-//         }
-//     }
-//     static getCart() {
-//         return cart;
-//     }
-// }
+const cart = [];
+module.exports = class cart {
+    static save(product, quantity) {
+        If(cart) {
+            const existingProductIndex = cart.products.findIndex(p => p.id === product.id);
+            if (existingProductIndex >= 0) {
+                const existingProduct = cart.products[existingProductIndex];
+                existingProduct.qty += quantity;
+                cart.totalPrice += product.price;
+            
+        } else {
+            cart = { products: [], totalPrice: 0 };
+            product.qty = 1
+            cart.products.push({ product, quantity });
+            cart.totalPrice += product.price;
+        }
+        };
+        return cart;
+    }
+}

@@ -1,6 +1,13 @@
 const sequelize = require('../config/connection');
+<<<<<<< HEAD
+
 const seedCategories = require('./category');
 const seedTags = require('./tag');
+
+=======
+const seedCategories = require('./category');
+const seedTags = require('./tag');
+>>>>>>> main
 const seedComputers = require('./computer');
 const seedLaptops = require('./laptop');
 const seedSmartPhones = require('./smartPhone');
