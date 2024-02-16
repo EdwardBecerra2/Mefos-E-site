@@ -92,8 +92,6 @@ app.post('/remove', (req, res) => {
 });
 
 
-app.listen(4242, () => console.log('Running on port 4242'));
-
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 })
