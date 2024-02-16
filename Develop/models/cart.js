@@ -26,7 +26,7 @@
 //             defaultValue: 1
 //         },
 // })
-const cart = null;
+const cart = [];
 module.exports = class cart {
     static save(product, quantity) {
         if (cart) { // isn't null
