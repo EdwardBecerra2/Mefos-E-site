@@ -32,4 +32,5 @@ const computerData = [
 ];
 
 const seedComputers = () => Computer.bulkCreate(computerData);
+
 module.exports = seedComputers;
