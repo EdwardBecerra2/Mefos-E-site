@@ -5,6 +5,8 @@ const Tag = require('./tag');
 const ProductTag = require('./ProductTag');
 const Computer = require('./computer');
 const Laptop = require('./laptop');
+const SmartPhone = require('./smartPhone');
+const SmartWatch = require('./smartwatch');
 // Products belongsTo Category
 Product.belongsTo(Category, {
     foreignKey: 'category_id'
@@ -52,5 +54,7 @@ module.exports = {
     ProductTag,
     Computer,
     Laptop,
+    SmartPhone,
+    SmartWatch,
 };
 
