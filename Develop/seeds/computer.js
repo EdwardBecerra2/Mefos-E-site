@@ -1,3 +1,4 @@
+
 const { Product } = require('../models');
 
 const computerData = [
@@ -32,5 +33,6 @@ const computerData = [
 ];
 
 const seedComputers = () => Product.bulkCreate(computerData);
+
 
 module.exports = seedComputers;
