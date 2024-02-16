@@ -29,27 +29,20 @@
 const cart = [];
 module.exports = class cart {
     static save(product, quantity) {
-        if (cart) { // isn't null
-            const existingProductsIndex = cart.products.findIndex(p => p.id == product.id); //checks if product is in cart
-            console.log(existingProductsIndex);
-            if (existingProductsIndex >= 0) {
-                const existingProduct = cart.products[existingProductsIndex];
+        If(cart) {
+            const existingProductIndex = cart.products.findIndex(p => p.id === product.id);
+            if (existingProductIndex >= 0) {
+                const existingProduct = cart.products[existingProductIndex];
                 existingProduct.qty += quantity;
                 cart.totalPrice += product.price;
-            } else {
-                product.qty = quantity;
-                cart.products.push({ product, quantity });
-                cart.totalPrice += product.price;
-            }
+            
         } else {
             cart = { products: [], totalPrice: 0 };
             product.qty = 1
-            cart.products.push(product);
-            cart.totalPrice = product.price;
+            cart.products.push({ product, quantity });
+            cart.totalPrice += product.price;
         }
-    }
-
-    static getCart() {
+        };
         return cart;
     }
 }
