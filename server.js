@@ -11,27 +11,27 @@ const sequelize = require('./Develop/config/connection');
 const app = express();
 
 // Import routes
-const authRoutes = require('./Develop/controllers/api/authRoutes'); 
+const authRoutes = require('./Develop/controllers/api/authRoutes');
 const homeRoute = require('./Develop/controllers/homeroute');
 const { connect } = require('http2');
 
 // Session middleware setup
 app.use(session({
-    secret: 'Super secret secret',
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize,
-    }),
-  }));
+  secret: 'Super secret secret',
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+}));
 
-  
+
 // Set up handlebars engine with main as the default layout
 app.engine('handlebars', engine({
-    layoutsDir: path.join(__dirname, 'Develop/views/layouts'),
-    defaultLayout: 'main'
-  }));
-  console.log('Layouts directory set to:', path.join(__dirname, 'Develop/views/layouts'));
+  layoutsDir: path.join(__dirname, 'Develop/views/layouts'),
+  defaultLayout: 'main'
+}));
+console.log('Layouts directory set to:', path.join(__dirname, 'Develop/views/layouts'));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'Develop/views/'));
 console.log('Views directory set to:', path.join(__dirname, 'Develop/views/'));
@@ -53,29 +53,44 @@ app.get('/', (req, res) => {
     if (!req.session.cart) {
       req.session.cart = [];
     }
+    
     res.render('product', { products: results, cart: req.session.cart })
   });
 });
 
+app.post('cartRoute', (req, res) => {
+  const product_id = req.body.category_id;
+  const product_name = req.body.product_name;
+  const product_price = req.body.price;
+  let count = 0;
+  for (i = 0; i < req.session.cart.length; i++) {
+    if (req.session.cart[i].product.id == product.id) {
+      req.session.cart[i].quantity += 1;
+      count++;
+    }
+  }
+  if (count == 0) {
+    const cart_data = {
+      product_id: category_id_id,
+      product_name: product_name,
+      product_price: parseFloat(price),
+    };
+    req.session.cart.push(cart_data);
+  }
+  res.redirect("/");
+  console.log(req.session.cart);
 
+});
 
-// const YOUR_DOMAIN = 'http://localhost:4242';
+// remove route for Remove from shopping cart
+app.post('/remove', (req, res) => {
+  const productId = req.body.productId;
+  const index = req.session.cart.findIndex(item => item.product_id === productId);
+  if (index !== -1) {
+    req.session.cart.splice(index, 1);
+  }
+  res.redirect('/');
+});
 
-// app.post('/create-checkout-session', async (req, res) => {
-//     const session = await stripe.checkout.sessions.create({
-//         line_items: [
-//             {
-//                 // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-//                 price: '{{PRICE_ID}}',
-//                 quantity: 1,
-//             },
-//         ],
-//         mode: 'payment',
-//         success_url: `${YOUR_DOMAIN}/success.html`,
-//         cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-//     });
-
-//     res.redirect(303, session.url);
-// });
 
 app.listen(4242, () => console.log('Running on port 4242'));
