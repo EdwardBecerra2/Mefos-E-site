@@ -30,7 +30,9 @@
 <a class="btn btn-primary" href="/Develop/seeds/product/<%=p.id" role="button">View Details</a>
 <form action="add-to-cart" method="post">
     <input type="hidden" name="id" value="<%=p.id">
-    <button type="submit" class="btn btn-primary">Add to Cart</button>
+    <div class="cart-btn">
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </div>
 </form>
 
      <footer>

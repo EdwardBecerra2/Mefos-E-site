@@ -11,10 +11,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` VARCHAR(255) NOT NULL
 );
 -- you can delete this later
-CREATE TABLE IF NOT EXISTS `Sessions` (
-  `sid` varchar(255) NOT NULL PRIMARY KEY,
-  `expires` datetime NOT NULL,
-  `data` text,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL
-);
+-- CREATE TABLE IF NOT EXISTS `Sessions` (
+--   `sid` varchar(255) NOT NULL PRIMARY KEY,
+--   `expires` datetime NOT NULL,
+--   `data` text,
+--   `createdAt` datetime NOT NULL,
+--   `updatedAt` datetime NOT NULL
+-- );

@@ -5,7 +5,6 @@ const path = require('path');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./Develop/config/connection');
 
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 

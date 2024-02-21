@@ -1,5 +1,5 @@
 # Hook up image url by modifying model, re-syncing your tables (source & seed)
-# Modify the image prop in all seeds to be image_url
+<!-- # Modify the image prop in all seeds to be image_url -->
 # Bring images back on product list
 # Add a class to the add to cart button
 # use a single click event listener in your front-end javascript to listen for click

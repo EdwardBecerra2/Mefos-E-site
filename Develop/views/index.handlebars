@@ -8,14 +8,17 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                            <form method="post" action="/add_cart">
+                            
                                 {{#each products as |product|}}
-                                    {{!-- <img src="{{image_url}}" class="img-thumbnail mb-1" width="200" height="200"/> --}}
-                                    <h1> {{product_name}} </h1>
-                                    <h1> {{price}} </h1>
-                                    <input type="submit" class="btn btn-warning" id="comp" value="Add Computer to Cart - ${{price}}" />
+                                <div class="col-md-4">
+                                    <img src="{{image_url}}" class="img-thumbnail mb-1" width="200" height="200"/>
+                                
+                                    <h1> {{product_name}} </h1> 
+                                    <h1> {{price}} </h1> 
+                                    <input type="button" class="btn btn-warning" onclick="addToCart(event)" data-prodid="{{id}}" data-prodname = "{{product_name}}" data-price="{{price}}" value="Add Computer to Cart - ${{price}}" />
+                                </div>
                                 {{/each}}
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -33,43 +36,10 @@
                             <th>Total Price</th>
                             <th>Remove</th>
                         </tr>
-                        <% if(cart.length>0){
-                            let total = 0;
-                            cart.forEach(item => {
-                            %>
-                            <tr>
-                                <td>
-                                    <%= item.product_name %>
-                                </td>
-                                <td>
-                                    <%= item.quantity %>
-                                </td>
-                                <td>
-                                    <%= item.product_price</td>
-                                <td>
-                                    <%= parseFloat(item.quantity) * parseFloat(itemFloat(item.product_price)</td>
-                                <td><button type="button" class="btn btn-danger btn-sm" onclick="remove_item(<%= item.product_id %>)"<Remove>
-                                <button></button></td>
-                            </tr>
-                            <% total +=parseFloat(item.quantity) * parseFloat(item.product_price); }) %>
-                                <tr>
-                                    <td colspan="3" align="right"><b>Total </b></td>
-                                    <td>
-                                        <%= total %>
-                                        <td>&nbsp;</td>
-                                    </td>
-                                </tr>
-                                }
-                                else {
+                        <tbody id="shoppingbag">
 
-                                }
-                                %>
-                                <tr>
-                                    <td colspan="5" align="center">No items found in cart</td>
-                                </tr>
-                                <%
-                                }
-                                %>
+                        </tbody>
+                        
                     </table>
                 </div>
             </div>
