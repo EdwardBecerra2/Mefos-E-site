@@ -4,9 +4,10 @@ const laptop = document.querySelector('#laptp');
 const smartPhone = document.querySelector('#smphone');
 const watch = document.querySelector('#watch');
 
+// event listeners for each button
 desktop.addEventListener('click', async function (event) {
     event.preventDefault();
-    const response = await fetch('/api/productRoutes', {
+    const response = await fetch('/api/productRoutes', { // fetches the data from the api
     })
     const data = await response.json(); // converts to JSON data
 
@@ -15,21 +16,21 @@ laptop.addEventListener('click', async function (event) {
     event.preventDefault();
     const response = await fetch('/api/productRoutes', {
     })
-    const data = await response.json(); // converts to JSON data
+    const data = await response.json(); 
 
 })
 smartPhone.addEventListener('click', async function (event) {
     event.preventDefault();
     const response = await fetch('/api/productRoutes', {
     })
-    const data = await response.json(); // converts to JSON data
+    const data = await response.json(); 
 
 })
 watch.addEventListener('click', async function (event) {
     event.preventDefault();
     const response = await fetch('/api/productRoutes', {
     })
-    const data = await response.json(); // converts to JSON data
+    const data = await response.json(); 
 
 })
 function addToCart(event) { 
@@ -43,7 +44,7 @@ function addToCart(event) {
     }
     console.log(item);
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    // if else to check to see if item is already in cart
+    // check to see if item is already in cart
     if (cart.find(prod => prod.id == item.id)) {
         item.qty += 1;
     } else {
