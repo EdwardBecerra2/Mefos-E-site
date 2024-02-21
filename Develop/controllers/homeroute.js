@@ -12,9 +12,6 @@ router.get('/', async (req, res) => {
         raw: true
     });
 
-    
-
-
     res.render('index', {
         loggedIn: req.session.loggedIn,
         products
