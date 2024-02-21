@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 const authRoutes = require('./Develop/controllers/api/authRoutes');
 const homeRoute = require('./Develop/controllers/homeroute');
 const { connect } = require('http2');
+const apiRoutes = require('./Develop/controllers/api/indexRoute');
 
 // Session middleware setup
 app.use(session({
@@ -45,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'Develop/public')));
 // Use the routes
 app.use('/', authRoutes);
 app.use('/', homeRoute);
+app.use('/api', apiRoutes);
 
 app.get('/', (req, res) => {
   const query = `SELECT * FROM product`;
@@ -70,7 +72,7 @@ app.post('cartRoute', (req, res) => {
   }
   if (count == 0) {
     const cart_data = {
-      product_id: category_id_id,
+      product_id: product_id,
       product_name: product_name,
       product_price: parseFloat(price),
     };
