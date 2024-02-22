@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEFO'S buy and sell everything</title>
+    <h1> MEFO's TECH Shop</h1>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -12,10 +13,6 @@
         <nav>
             <!-- navigation links -->
             <a href="/">Home</a>
-            <a href="/shop">Shop</a>
-            <a href="/blog">Blog</a>
-            <a href="/contact">Contacts</a>
-            <!-- Conditional rendering for authentication links -->
             {{#if loggedIn}}
                 <form action="/api/logout" method="post" class="logout-form">
                     <button type="submit" id="logout-button" class="btn btn-secondary">Logout</button>
@@ -29,8 +26,14 @@
 
     <!-- Main content that changes for each page -->
     {{{body}}}
+<div class="card-footer"
+<a class="btn btn-primary" href="/Develop/seeds/product/<%=p.id" role="button">View Details</a>
+<form action="add-to-cart" method="post">
+    <input type="hidden" name="id" value="<%=p.id">
+    <button type="submit" class="btn btn-primary">Add to Cart</button>
+</form>
 
-    <footer>
+     <footer>
         <!-- Footer -->
         <p>&copy; 2024 MEFO's. All rights reserved.</p>
     </footer>

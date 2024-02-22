@@ -1,5 +1,90 @@
+<html>
 <div class="gallery">
-    <img src="https://via.placeholder.com/300" alt="Placeholder image" />
-    <img src="https://via.placeholder.com/300" alt="Placeholder image" />
-    <img src="https://via.placeholder.com/300" alt="Placeholder image" />
+    <div class="mt-3 mb-3">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Product List</h1>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                            <form method="post" action="/add_cart">
+                                {{#each products as |product|}}
+                                    {{!-- <img src="{{image_url}}" class="img-thumbnail mb-1" width="200" height="200"/> --}}
+                                    <h1> {{product_name}} </h1>
+                                    <h1> {{price}} </h1>
+                                    <input type="submit" class="btn btn-warning" id="comp" value="Add Computer to Cart - ${{price}}" />
+                                {{/each}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header"><b>Shopping Cart</b></div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                            <th>Remove</th>
+                        </tr>
+                        {{!-- <% if(cart.length>0){
+                            let total = 0;
+                            cart.forEach(item => {
+                            %>
+                            <tr>
+                                <td>
+                                    <%= item.product_name %>
+                                </td>
+                                <td>
+                                    <%= item.quantity %>
+                                </td>
+                                <td>
+                                    <%= item.product_price</td>
+                                <td>
+                                    <%= parseFloat(item.quantity) * parseFloat(itemFloat(item.product_price)</td>
+                                <td><button type="button" class="btn btn-danger btn-sm" onclick="remove_item(<%= item.product_id %>)"<Remove>
+                                <button></button></td>
+                            </tr>
+                            <% total +=parseFloat(item.quantity) * parseFloat(item.product_price); }) %>
+                                <tr>
+                                    <td colspan="3" align="right"><b>Total </b></td>
+                                    <td>
+                                        <%= total %>
+                                        <td>&nbsp;</td>
+                                    </td>
+                                </tr>
+                                }
+                                else {
+
+                                }
+                                %>
+                                <tr>
+                                    <td colspan="5" align="center">No items found in cart</td>
+                                </tr>
+                                <%
+                                }
+                                %> --}}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</html>
+<script src = "./js/cart.js"></script>
+
+
+<script>
+    function remove_item(item_id) {
+        if (confirm("Are sure sure?"))
+        {
+            window.location.href =`/remove_item?id=${item_id}`; 
+        }
+    }
+</script>

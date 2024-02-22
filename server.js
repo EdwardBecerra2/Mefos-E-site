@@ -1,6 +1,5 @@
 // This is your test secret API key.
 require('dotenv').config();
-
 const stripe = require('stripe')('sk_test_51Oggj7Gh3q0yh3BLowB8cJAqHl3lJWFx5DiwR56OZUwZTe3m0zdvsQD25Fpq1K50KaP0y4eghb9EVttCyVnjDSqm00UuZEv0K3');
 const express = require('express');
 const { engine } = require('express-handlebars');
@@ -9,29 +8,32 @@ const path = require('path');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./Develop/config/connection');
 
+
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 // Import routes
-const authRoutes = require('./Develop/controllers/api/authRoutes'); 
+const authRoutes = require('./Develop/controllers/api/authRoutes');
 const homeRoute = require('./Develop/controllers/homeroute');
+const { connect } = require('http2');
 
 // Session middleware setup
 app.use(session({
-    secret: 'Super secret secret',
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize,
-    }),
-  }));
+  secret: 'Super secret secret',
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+}));
 
-  
+
 // Set up handlebars engine with main as the default layout
 app.engine('handlebars', engine({
-    layoutsDir: path.join(__dirname, 'Develop/views/layouts'),
-    defaultLayout: 'main'
-  }));
-  console.log('Layouts directory set to:', path.join(__dirname, 'Develop/views/layouts'));
+  layoutsDir: path.join(__dirname, 'Develop/views/layouts'),
+  defaultLayout: 'main'
+}));
+console.log('Layouts directory set to:', path.join(__dirname, 'Develop/views/layouts'));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'Develop/views/'));
 console.log('Views directory set to:', path.join(__dirname, 'Develop/views/'));
@@ -47,23 +49,23 @@ app.use(express.static(path.join(__dirname, 'Develop/public')));
 app.use('/', authRoutes);
 app.use('/', homeRoute);
 
-// const YOUR_DOMAIN = 'http://localhost:4242';
+const YOUR_DOMAIN = 'http://localhost:4242';
 
-// // app.post('/create-checkout-session', async (req, res) => {
-//     const session = await stripe.checkout.sessions.create({
-//         line_items: [
-//             {
-//                 // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-//                 price: '{{PRICE_ID}}',
-//                 quantity: 1,
-//             },
-//         ],
-//         mode: 'payment',
-//         success_url: `${YOUR_DOMAIN}/success.html`,
-//         cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-//     });
+app.post('/create-checkout-session', async (req, res) => {
+    const session = await stripe.checkout.sessions.create({
+        line_items: [
+            {
+                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+                price: '{{PRICE_ID}}',
+                quantity: 1,
+            },
+        ],
+        mode: 'payment',
+        success_url: `${YOUR_DOMAIN}/success.html`,
+        cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+    });
 
-//     res.redirect(303, session.url);
-// });
+    res.redirect(303, session.url);
+});
 
-app.listen(3001, () => console.log('Running on port 3001'));
+app.listen(4242, () => console.log('Running on port 4242'));
