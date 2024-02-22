@@ -42,7 +42,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'Develop/public')));
 
-// 
 app.use('/', authRoutes);
 app.use('/', homeRoute);
 app.use('/api', apiRoutes);
