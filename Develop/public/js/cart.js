@@ -33,12 +33,12 @@ watch.addEventListener('click', async function (event) {
     const data = await response.json(); 
 
 })
-function addToCart(event) { 
-    console.log(event.target);
-    const item = {
-        id: parseInt(event.target.dataset.prodid),  // converts to integer   
+function addToCart(event) { // function triggered from button to add items to the cart
+    console.log(event.target); 
+    const item = { // object to store the item
+        id: parseInt(event.target.dataset.prodid),  // parseInt converts to integer   
         product_name: event.target.dataset.prodname,
-        price: parseInt(event.target.dataset.price), // converts to integer
+        price: parseInt(event.target.dataset.price),  // converts to integer
         qty: 1,
 
     }
@@ -51,32 +51,31 @@ function addToCart(event) {
         cart.push(item);
     }
 
-    // cart.push(item);
     localStorage.setItem('cart', JSON.stringify(cart));
     console.log(cart);
     loadshoppingbag();
 }
-function loadshoppingbag() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+function loadshoppingbag() {  // function to load the shopping bag
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // get the cart from local storage
     console.log(cart);
-    const shoppingbag = document.querySelector('#shoppingbag');
+    const shoppingbag = document.querySelector('#shoppingbag'); // get the shopping bag element
     shoppingbag.innerHTML = ''; // clear the shopping bag
-    cart.forEach(item => {
+    cart.forEach(item => { // loop through the cart and add each item to the shopping bag
         const tr = document.createElement('tr'); //creating a table row
-        tr.innerHTML = `
+       // template literal to add the item to the table row
+        tr.innerHTML = ` 
             <td>${item.product_name}</td>
             <td>${item.qty}</td>
             <td>${item.price}</td>
             <td>${item.price * item.qty}</td>
-
             <td><button onclick="removeFromCart(${item.id})">Remove</button></td>
-        `;
+        `; 
         shoppingbag.append(tr);
     });
 }
 function removeFromCart(id) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart = cart.filter(item => item.id !== id); // filter out the item with the id
+    cart = cart.filter(item => item.id !== id); // filter out the removed id item
     localStorage.setItem('cart', JSON.stringify(cart));
     loadshoppingbag();
 }

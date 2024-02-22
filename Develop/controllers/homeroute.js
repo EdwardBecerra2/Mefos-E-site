@@ -11,9 +11,9 @@ router.get('/', async (req, res) => { // this is the home route
         raw: true
     });
 
-    res.render('index', {
+    res.render('index', { // response to the index.handlebars file
         loggedIn: req.session.loggedIn,
-        products
+        products  //the products object being passed to the index.handlebars file
     });
 });
 

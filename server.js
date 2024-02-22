@@ -41,7 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'Develop/public')));
 
-// Use the routes
+// 
 app.use('/', authRoutes);
 app.use('/', homeRoute);
 
@@ -51,7 +51,6 @@ app.get('/', (req, res) => {
     if (!req.session.cart) {
       req.session.cart = [];
     }
-    
     res.render('product', { products: results, cart: req.session.cart })
   });
 });
