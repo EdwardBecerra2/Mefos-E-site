@@ -11,7 +11,7 @@
 
 
   ## Project Description
-  A user-friendly, intuitive website to easily buy tech equipment.
+  A user-friendly, intuitive website to easily buy four categories of tech equipment.
   
   ### Licensing 
   MIT
@@ -26,7 +26,7 @@
   N/A
 
   ## Usage 
-  N/A
+  Login with new credentials.
 
   ## Contribution
   N/A
