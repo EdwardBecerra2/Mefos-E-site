@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Product extends Model {}
 
-Product.init(
+Product.init( 
     {
         id: {
           type: DataTypes.INTEGER,
@@ -16,7 +16,7 @@ Product.init(
             allowNull: false,
         },
         price: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(),
             allowNull: false,
             validate: {
                 isDecimal: true,

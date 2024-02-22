@@ -5,7 +5,6 @@ const path = require('path');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./Develop/config/connection');
 
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -43,7 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'Develop/public')));
 
-// Use the routes
+// 
 app.use('/', authRoutes);
 app.use('/', homeRoute);
 app.use('/api', apiRoutes);
@@ -54,7 +53,6 @@ app.get('/', (req, res) => {
     if (!req.session.cart) {
       req.session.cart = [];
     }
-    
     res.render('product', { products: results, cart: req.session.cart })
   });
 });
