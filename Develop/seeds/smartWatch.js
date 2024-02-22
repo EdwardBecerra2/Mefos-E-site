@@ -11,7 +11,6 @@ const smartWatchData = [
         image_url: 'https://img.freepik.com/free-psd/digital-smart-watch-icon-isolated-3d-render-illustration_439185-11924.jpg?size=626&ext=jpg',
         color: 'black, green, red, white, blue',
         category_id: 4,
-
     },
     {
         brand: 'Tapple',
@@ -41,5 +40,6 @@ const smartWatchData = [
         category_id: 4,
     },
 ];
+
 const seedSmartWatch = () => Product.bulkCreate(smartWatchData);
 module.exports = seedSmartWatch;

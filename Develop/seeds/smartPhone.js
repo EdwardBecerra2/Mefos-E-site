@@ -34,5 +34,7 @@ const smartPhone = [
         category_id: 3,
     },
 ];
+
 const seedSmartPhones = () => Product.bulkCreate(smartPhone);
 module.exports = seedSmartPhones;
+

@@ -1,3 +1,4 @@
+
 const { Product } = require('../models');
 
 const laptopData = [
@@ -12,14 +13,23 @@ const laptopData = [
         product_name: 'TacBook Wind',
         price: $1200,
         stock: 5,
+<<<<<<< HEAD
         image_url: 'https://mezha.media/wp-content/uploads/2022/10/m2-macbook-pro-and-mac-mini-postponed-400x290.jpg',
         category_id: 2,
+=======
+        image: 'https://mezha.media/wp-content/uploads/2022/10/m2-macbook-pro-and-mac-mini-postponed-400x290.jpg',
+>>>>>>> main
     },
     {
         product_name: 'TacBook Mini',
         price: $1000,
         stock: 15,
+<<<<<<< HEAD
         image_url: 'https://mezha.media/wp-content/uploads/2022/10/AORUS-15-XE4-2-of-23-400x290.jpg',
+=======
+        image: 'https://mezha.media/wp-content/uploads/2022/10/AORUS-15-XE4-2-of-23-400x290.jpg',
+
+>>>>>>> main
         category_id: 2,
     },
     {
@@ -30,5 +40,6 @@ const laptopData = [
         category_id: 2,
     },
 ];
+
 const seedLaptops = () => Product.bulkCreate(laptopData);
 module.exports = seedLaptops;

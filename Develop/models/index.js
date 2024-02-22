@@ -33,7 +33,6 @@ ProductTag.belongsTo(Product, {
     foreignKey: 'product_id',
 });
 
-
 module.exports = {
     Product,
     Category,
