@@ -19,8 +19,9 @@
   [![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/.)
   
    
-  
-  
+  ![Screenshot 2024-02-21 at 10 39 39 PM](https://github.com/EdwardBecerra2/Mefos-E-site/assets/142930268/0be4b5c0-b9c1-404a-8c74-23439d0242d3)
+
+
 
   ## Installation 
   N/A
