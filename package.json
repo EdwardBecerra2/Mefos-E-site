@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node Develop/seeds/index.js"
+    "seed": "node Develop/seeds/index.js",
+    "heroku-postbuild": "npm run seed" 
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
